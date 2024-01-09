@@ -21,57 +21,59 @@ use pocketmine\utils\TextFormat;
 
 
 
+    
 
 class Main extends PluginBase implements Listener {
+    
+    public $myConfig;
     public function onEnable(): void {
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-
-           }
+        @mkdir($this->getDataFolder());
+        $this->saveResource("config.yml");
+        $this->myConfig = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+    
+      
+        }
+     
+        
+      
     
 
-    public function onEntityDeath(EntityDeathEvent $event): void {
+        public function onEntityDeath(EntityDeathEvent $event): void {
+     
         $killedEntity = $event->getEntity();
         $cause = $killedEntity->getLastDamageCause();
-
+           
+                
         if ($cause instanceof EntityDamageByEntityEvent) {
             $damager = $cause->getDamager();
 
             if ($damager instanceof Player) {
-                // Check if the damager is a Player
-                $allowedEntityTypes = ["Zombie", "Villager", "Cow"];
-
-                if (in_array($killedEntity->getName(), $allowedEntityTypes)) {
-                    $moneyReward = $this->getConfig()->get("amount");
-
-
-                    if ($moneyReward > 0) {
-                        // Use BedrockEconomy to add balance to the player
-                        $playerName = $damager->getName();
-                        $command = "addbalance $playerName $moneyReward";
-                        // Log debug messages to the console
-                  
-                        
-                  
-                        $customMessage = TextFormat::GREEN . "+" . TextFormat::YELLOW . "$" . $moneyReward;
-                        $damager->sendPopup($customMessage);
-                        
-                        $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
-
+  
+                $allowedEntityTypes = $this->getConfig()->get("animals");
+             
+                foreach ($allowedEntityTypes as $index => $entityData) {
+                    $entityType = key($entityData);
+                    $moneyReward = current($entityData);
+            
               
+                    
+                    
+                    if ($killedEntity->getName() === $entityType) {
+                     
+                       
+                            $playerName = $damager->getName();
+                            $command = "addbalance $playerName $moneyReward";
+                       
 
+                            $customMessage = TextFormat::GREEN . "+" . TextFormat::YELLOW . "$" . $moneyReward;
+                            $damager->sendPopup($customMessage);
+
+                            $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
                         
                     }
-
                 }
-                
-                
-                else {
-                    // Send a message if the entity is not an allowed type
-                    $damager->sendMessage("The entity is not an allowed type.");
-                }
-                
-        
             }
         }
     }
