@@ -18,6 +18,8 @@ use pocketmine\console\ConsoleCommandSender;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
+use pocketmine\level\Level;
+use pocketmine\world\World;
 
 
 
@@ -44,13 +46,17 @@ class Main extends PluginBase implements Listener {
      
         $killedEntity = $event->getEntity();
         $cause = $killedEntity->getLastDamageCause();
-           
-                
+   
         if ($cause instanceof EntityDamageByEntityEvent) {
             $damager = $cause->getDamager();
-
+   
+         
             if ($damager instanceof Player) {
-  
+                if (!$damager->hasPermission("killentity.plugin")) {
+                $levelName = $damager->getWorld()->getFolderName();
+                
+                      
+                         if(in_array($levelName, $this->getConfig()->get("worlds"))){
                 $allowedEntityTypes = $this->getConfig()->get("animals");
              
                 foreach ($allowedEntityTypes as $index => $entityData) {
@@ -64,14 +70,35 @@ class Main extends PluginBase implements Listener {
                      
                        
                             $playerName = $damager->getName();
+                      
                             $command = "addbalance $playerName $moneyReward";
                        
 
-                            $customMessage = TextFormat::GREEN . "+" . TextFormat::YELLOW . "$" . $moneyReward;
-                            $damager->sendPopup($customMessage);
+                        $msg = $this->getConfig()->get("message");
+                              
+
+                               if ($msg === 1) {
+                                
+                                   $customMessage = TextFormat::GREEN . "+" . TextFormat::YELLOW . "$" . $moneyReward;
+                                   $damager->sendPopup($customMessage);
+                               } elseif ($msg === 2) {
+                                  
+                                   $customMessage = TextFormat::GREEN . "+" . TextFormat::YELLOW . "$" . $moneyReward;
+                                   $damager->sendMessage($customMessage);
+                                   
+                               }
+                               
+                        elseif ($msg === 3) {
+                            continue;
+                        }
+                               else {
+                                   // Default case: 'message' is not set or has an invalid value
+                                   $this->getLogger()->info("Invalid value for 'message' in the config.");
+                               }
 
                             $this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), $command);
-                        
+                        }
+                        }
                     }
                 }
             }
