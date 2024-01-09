@@ -1,0 +1,5 @@
+# %money = amount money
+amount: 10
+
+disable_worlds:
+- swevagin
