@@ -52,7 +52,7 @@ class Main extends PluginBase implements Listener {
    
          
             if ($damager instanceof Player) {
-                if (!$damager->hasPermission("killentity.plugin")) {
+                if ($damager->hasPermission("killentity.plugin")) {
                 $levelName = $damager->getWorld()->getFolderName();
                 
                       
