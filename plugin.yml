@@ -2,7 +2,7 @@ name: KillEntity
 version: 0.0.2
 api: [5.0.0]
 author: nhiwentwest
-main: swevagin\KillEntity\Main
+main: nhiwentwest\KillEntity\Main
 description: A plugin that adds money to a player when they kill an entity.
 
 permissions:
