@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace AlexPads\CustomShopUI\economy;
+namespace nhiwentwest\KillEntity\economy;
 
 use InvalidArgumentException;
-use AlexPads\CustomShopUI\Main;
+use nhiwentwest\KillEntity\Main;
 use pocketmine\utils\Utils;
 
 final class EconomyManager{
