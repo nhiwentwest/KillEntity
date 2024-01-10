@@ -5,48 +5,50 @@ declare(strict_types=1);
 namespace nhiwentwest\KillEntity\economy;
 
 use Closure;
-use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
-use cooldogedev\BedrockEconomy\BedrockEconomy;
-use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
-use InvalidArgumentException;
 use pocketmine\player\Player;
-use nhiwentwest\KillEntity\Main;
-use pocketmine\Server;
-use function assert;
 
-final class BedrockEconomyIntegration implements EconomyIntegration{
+interface EconomyIntegration{
 
-	private BedrockEconomy $plugin;
+	/**
+	 * @param array $config
+	 *
+	 * @phpstan-param array<string, mixed> $config
+	 */
+	public function init(array $config) : void;
 
-	public function __construct(){
-		/** @var BedrockEconomy|null $plugin */
-		$plugin = Server::getInstance()->getPluginManager()->getPlugin("BedrockEconomy");
-		if($plugin === null){
-			throw new InvalidArgumentException("BedrockEconomy plugin was not found");
-		}
+	/**
+	 * Returns how much money the player has.
+	 *
+	 * @param Player $player
+	 * @param Closure $callback
+	 *
+	 * @phpstan-param Closure(float) : void $callback
+	 */
+	public function getMoney(Player $player) : void;
 
-		$this->plugin = $plugin;
-	}
+	/**
+	 * Adds a given amount of money to the player.
+	 *
+	 * @param Player $player
+	 * @param float $money
+	 */
+	public function addMoney(Player $player, float $money) : void;
 
-    public function init(array $config) : void{
-	}
+	/**
+	 * Removes a given amount of money from the player.
+	 *
+	 * @param Player $player
+	 * @param Closure $callback
+	 *
+	 * @phpstan-param Closure(bool) : void $callback
+	 */
+	public function removeMoney(Player $player, float $money) : void;
 
-	public function getMoney(Player $player, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName());
-		}));
-	}
-
-	public function addMoney(Player $player, float $money) : void{
-		BedrockEconomyAPI::getInstance()->addToPlayerBalance($player->getName(), (int) ceil($money));
-	}
-
-	//Thanks for the Repair @cooldogedev
-	public function removeMoney(Player $player, float $money, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->subtractFromPlayerBalance($player->getName(), (int) ceil($money));
-		}));
-	}
-
-	public function formatMoney(float $money) : string{
-		return $this->plugin->getCurrencyManager()->getSymbol() . number_format($money);
-	}
+	/**
+	 * Formats money.
+	 *
+	 * @param float $money
+	 * @return string
+	 */
+	public function formatMoney(float $money) : string;
 }
