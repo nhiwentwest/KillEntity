@@ -2,7 +2,7 @@
 
 ## Overview
 
-KillEntity provides a monetary reward to players who successfully defeat specific types of entities.
+KillEntity provides a monetary reward to players who successfully defeat specific types of entities. Moreover, you can set up the percentage of money that players will lose if they die during combat!
 
 ## Features
 
@@ -21,6 +21,7 @@ animals:
 # 2 for sending messages
 # 3 to turn off message notifications
 message: 1
+percent: 50
 # enter the name world that you want to be activated
 worlds:
 - world
