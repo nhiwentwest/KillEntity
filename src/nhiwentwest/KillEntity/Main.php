@@ -126,7 +126,7 @@ class Main extends PluginBase implements Listener {
         if ($cause instanceof EntityDamageByEntityEvent) {
             
             $damager = $cause->getDamager();
-            $damagerName = $damager->getName();
+           
            
             
         
