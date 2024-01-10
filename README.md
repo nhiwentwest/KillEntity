@@ -27,6 +27,6 @@ worlds:
 - world
 ```
 
-## Note
+[![](https://poggit.pmmp.io/shield.state/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
+[![](https://poggit.pmmp.io/shield.api/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
 
-Make sure to have BedrockEconomy installed for optimal functionality.
