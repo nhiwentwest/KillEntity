@@ -9,20 +9,7 @@ use InvalidArgumentException;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-interface EconomyIntegration {
-
-    public function init(array $config): void;
-
-    public function getMoney(Player $player, Closure $callback): void;
-
-    public function addMoney(Player $player, float $money): void;
-
-    public function removeMoney(Player $player, float $money): void;
-
-    public function formatMoney(float $money): string;
-}
-
-class BedrockEconomyIntegration implements EconomyIntegration {
+class BedrockEconomyIntegration {
 
     private BedrockEconomy $plugin;
 
@@ -58,7 +45,7 @@ class BedrockEconomyIntegration implements EconomyIntegration {
     }
 }
 
-class EconomyAPIIntegration implements EconomyIntegration {
+class EconomyAPIIntegration {
 
     private EconomyAPI $plugin;
 
