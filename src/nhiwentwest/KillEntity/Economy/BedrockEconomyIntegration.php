@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace nhiwentwest\KillEntity\Economy;
+namespace nhiwentwest\KillEntity\economy;
 
 use Closure;
 use InvalidArgumentException;
