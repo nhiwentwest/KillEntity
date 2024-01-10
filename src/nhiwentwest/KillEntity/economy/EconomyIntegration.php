@@ -43,7 +43,7 @@ interface EconomyIntegration{
 	 *
 	 * @phpstan-param Closure(bool) : void $callback
 	 */
-	public function removeMoney(Player $player, float $money, Closure $callback) : void;
+	public function removeMoney(Player $player, float $money) : void;
 
 	/**
 	 * Formats money.
