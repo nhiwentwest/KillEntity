@@ -152,7 +152,7 @@ class Main extends PluginBase implements Listener {
                     
                     $msg = $this->getConfig()->get("message");
                           
-              $economy->getMoney($player, static function(float $money) use($player, $playerName, $lostPercentage, $msg) : void {
+              $economy->getMoney($player, static function(float $money) use($player, $lostPercentage, $msg) : void {
                                
                                  $currentBalance = $money;
 
