@@ -1,13 +1,9 @@
 name: KillEntity
-version: 0.0.1
+version: 0.0.2
 api: [5.0.0]
 author: swevagin
 main: swevagin\KillEntity\Main
 description: A plugin that adds money to a player when they kill an entity.
-
-
-depend:
-- BedrockEconomy
 
 permissions:
   killentity.plugin:
