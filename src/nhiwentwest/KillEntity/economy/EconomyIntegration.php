@@ -7,6 +7,7 @@ namespace nhiwentwest\KillEntity\economy;
 use Closure;
 use pocketmine\player\Player;
 
+
 interface EconomyIntegration{
 
 	/**
@@ -24,7 +25,7 @@ interface EconomyIntegration{
 	 *
 	 * @phpstan-param Closure(float) : void $callback
 	 */
-	public function getMoney(Player $player) : void;
+	public function getMoney(Player $player, Closure $callback) : void;
 
 	/**
 	 * Adds a given amount of money to the player.
@@ -42,7 +43,7 @@ interface EconomyIntegration{
 	 *
 	 * @phpstan-param Closure(bool) : void $callback
 	 */
-	public function removeMoney(Player $player, float $money) : void;
+	public function removeMoney(Player $player, float $money, Closure $callback) : void;
 
 	/**
 	 * Formats money.
