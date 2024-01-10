@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AlexPads\CustomShopUI\economy;
+namespace nhiwentwest\KillEntity\economy;
 
 use Closure;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
@@ -10,7 +10,7 @@ use cooldogedev\BedrockEconomy\BedrockEconomy;
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
 use InvalidArgumentException;
 use pocketmine\player\Player;
-use AlexPads\CustomShopUI\Main;
+use nhiwentwest\KillEntity\Main;
 use pocketmine\Server;
 use function assert;
 
@@ -32,8 +32,7 @@ final class BedrockEconomyIntegration implements EconomyIntegration{
 	}
 
 	public function getMoney(Player $player, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), ClosureContext::create(static function(?int $balance) use($callback) : void{
-			$callback($balance ?? 0);
+		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName());
 		}));
 	}
 
@@ -43,8 +42,7 @@ final class BedrockEconomyIntegration implements EconomyIntegration{
 
 	//Thanks for the Repair @cooldogedev
 	public function removeMoney(Player $player, float $money, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->subtractFromPlayerBalance($player->getName(), (int) ceil($money), ClosureContext::create(static function(bool $success) use($callback) : void{
-			$callback($success);
+		BedrockEconomyAPI::getInstance()->subtractFromPlayerBalance($player->getName(), (int) ceil($money));
 		}));
 	}
 
