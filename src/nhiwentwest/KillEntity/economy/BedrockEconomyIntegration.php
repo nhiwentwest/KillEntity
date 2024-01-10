@@ -31,9 +31,11 @@ private BedrockEconomy $plugin;
     public function init(array $config) : void{
 	}
 
-	public function getMoney(Player $player) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName());
-		}
+		public function getMoney(Player $player, Closure $callback) : void{
+		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), ClosureContext::create(static function(?int $balance) use($callback) : void{
+			$callback($balance ?? 0);
+		}));
+	}
 	
 
 	public function addMoney(Player $player, float $money) : void{
