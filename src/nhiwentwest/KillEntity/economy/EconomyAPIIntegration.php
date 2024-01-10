@@ -19,9 +19,10 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	public function init(array $config) : void{
 	}
 
-	public function getMoney(Player $player) : void{
+	public function getMoney(Player $player, Closure $callback) : void{
 		$money = $this->plugin->myMoney($player->getName());
-	
+		assert(is_float($money));
+		$callback($money);
 	}
 
 	public function addMoney(Player $player, float $money) : void{
