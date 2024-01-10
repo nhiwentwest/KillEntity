@@ -17,7 +17,7 @@ use function assert;
 final class BedrockEconomyIntegration implements EconomyIntegration{
 
 	
-
+private BedrockEconomy $plugin;
 	public function __construct(){
 		/** @var BedrockEconomy|null $plugin */
 		$plugin = Server::getInstance()->getPluginManager()->getPlugin("BedrockEconomy");
