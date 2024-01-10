@@ -6,7 +6,7 @@ namespace nhiwentwest\KillEntity\economy;
 
 use Closure;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
-use cooldogedev\BedrockEconomy\BedrockEconomy;
+use cooldogedev\BedrockEconomy;
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
 use InvalidArgumentException;
 use pocketmine\player\Player;
