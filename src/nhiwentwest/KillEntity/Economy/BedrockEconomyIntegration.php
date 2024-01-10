@@ -14,7 +14,7 @@ use nhiwentwest\KillEntity\Main;
 use pocketmine\Server;
 use function assert;
 
-final class BedrockEconomyIntegration implements EconomyIntegration{
+class BedrockEconomyIntegration implements EconomyIntegration{
 
 	private BedrockEconomy $plugin;
 
