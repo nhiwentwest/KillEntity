@@ -4,6 +4,6 @@ branches:
 - main
 projects:
   KillEntity:
-    path: ""
+    path: "nhiwentwest\KillEntity\Main"
     icon: "icon.png"
 ...
