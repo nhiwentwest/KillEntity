@@ -5,4 +5,5 @@ branches:
 projects:
   KillEntity:
     path: ""
+    icon: "icon.png"
 ...
