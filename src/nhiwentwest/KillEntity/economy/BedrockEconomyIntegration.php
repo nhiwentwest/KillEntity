@@ -32,12 +32,13 @@ private BedrockEconomy $plugin;
 	}
 
 	
-	public function getMoney(Player $player, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), ConnectionPool::create(static function(?int $balance) use($callback) : void{
-			$callback($balance ?? 0);
-		}));
-	}
-	
+
+	public function getMoney(Player $player, Closure $callback): void {
+    BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), static function (?int $balance) use ($callback): void {
+        $callback($balance ?? 0);
+    });
+}
+
 
 	public function addMoney(Player $player, float $money) : void{
 		BedrockEconomyAPI::getInstance()->addToPlayerBalance($player->getName(), (int) ceil($money));
