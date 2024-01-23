@@ -25,11 +25,11 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 		assert(is_float($money));
 		$callback($money);
 	}
-	   $defaultCurrency = EconomyAPI::getInstance()->getDefaultCurrency();
+	 
 
 		public function getMonetaryUnit(): string {
 	
-		return $this->defaultCurrency->getCurrency()->getSymbol();
+		return $this->getCurrency()->getSymbol();
 	}
 
 	public function addMoney(Player $player, float $money) : void{
