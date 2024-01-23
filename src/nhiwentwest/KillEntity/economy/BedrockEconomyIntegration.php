@@ -7,7 +7,7 @@ namespace nhiwentwest\KillEntity\economy;
 use Closure;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use cooldogedev\BedrockEconomy\BedrockEconomy;
-use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
+use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\ConnectionPool;
 use InvalidArgumentException;
 use pocketmine\player\Player;
 use nhiwentwest\KillEntity\Main;
@@ -31,7 +31,8 @@ private BedrockEconomy $plugin;
     public function init(array $config) : void{
 	}
 
-		public function getMoney(Player $player, Closure $callback) : void{
+	
+	public function getMoney(Player $player, Closure $callback) : void{
 		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), ClosureContext::create(static function(?int $balance) use($callback) : void{
 			$callback($balance ?? 0);
 		}));
