@@ -8,7 +8,6 @@ use Closure;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use cooldogedev\BedrockEconomy\BedrockEconomy;
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\ConnectionPool;
-use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\exception\SQLException;
 use InvalidArgumentException;
 use pocketmine\player\Player;
 use nhiwentwest\KillEntity\Main;
@@ -34,7 +33,7 @@ private BedrockEconomy $plugin;
 
 	
 	public function getMoney(Player $player, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), fromArray::create(static function(?int $balance) use($callback) : void{
+		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), SQLException::create(static function(?int $balance) use($callback) : void{
 			$callback($balance ?? 0);
 		}));
 	}
