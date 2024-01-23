@@ -33,7 +33,7 @@ private BedrockEconomy $plugin;
 
 	
 	public function getMoney(Player $player, Closure $callback) : void{
-		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), SQLException::create(static function(?int $balance) use($callback) : void{
+		BedrockEconomyAPI::getInstance()->getPlayerBalance($player->getName(), ConnectionPool::create(static function(?int $balance) use($callback) : void{
 			$callback($balance ?? 0);
 		}));
 	}
