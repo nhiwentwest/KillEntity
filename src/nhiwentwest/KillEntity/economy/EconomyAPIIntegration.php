@@ -35,12 +35,15 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	public function removeMoney(Player $player, float $money) : void{
 		$this->plugin->reduceMoney($player->getName(), $money);
 	}
-	public function format(float $money): string {
-		return sprintf("\xef\xbf\xa6%d", floor($money));
-	}
+
+
+	public function formatMoney(float $money): string {
+    return $this->plugin->format($money);
+}
+
+public function format(float $money): string {
+    return sprintf("\xef\xbf\xa6%d", floor($money));
+}
 	
-public function formatMoney(float $money) : string{
-		return $this->plugin->format($money);
-	}
 
 }
