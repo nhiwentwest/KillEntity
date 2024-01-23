@@ -6,7 +6,7 @@ namespace nhiwentwest\KillEntity\economy;
 
 use Closure;
 use pocketmine\player\Player;
-use onebone\economyapi\EconomyAPI;
+
 
 final class EconomyAPIIntegration implements EconomyIntegration{
 
