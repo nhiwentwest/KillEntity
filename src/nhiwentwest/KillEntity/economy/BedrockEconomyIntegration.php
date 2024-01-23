@@ -8,6 +8,7 @@ use Closure;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use cooldogedev\BedrockEconomy\BedrockEconomy;
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\ConnectionPool;
+use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\exception\SQLException;
 use InvalidArgumentException;
 use pocketmine\player\Player;
 use nhiwentwest\KillEntity\Main;
