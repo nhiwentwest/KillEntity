@@ -8,3 +8,7 @@ description: A plugin that adds money to a player when they kill an entity.
 permissions:
   killentity.plugin:
     default: true
+
+softdepend:
+- EconomyAPI
+- BedRock
