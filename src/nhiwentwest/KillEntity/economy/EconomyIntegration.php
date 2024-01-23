@@ -35,15 +35,7 @@ interface EconomyIntegration{
 	 */
 	public function addMoney(Player $player, float $money) : void;
 
-	/**
-	 * Removes a given amount of money from the player.
-	 *
-	 * @param Player $player
-	 * @param Closure $callback
-	 *
-	 * @phpstan-param Closure(bool) : void $callback
-	 */
-	public function removeMoney(Player $player, Closure $callback) : void;
+	public function removeMoney(Player $player, float $money) : void;
 
 	/**
 	 * Formats money.
