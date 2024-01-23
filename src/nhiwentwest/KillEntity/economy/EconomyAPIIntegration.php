@@ -27,7 +27,10 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 		$callback($money);
 	}
 	 
-
+public function getDefaultCurrency(Player $player): Currency {
+		return $this->plugin->getDefaultCurrency();
+	}
+	
 		public function getMonetaryUnit(): string {
 	        return $this->getDefaultCurrency->getCurrency()->getSymbol();
 	}
