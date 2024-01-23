@@ -11,4 +11,4 @@ permissions:
 
 softdepend:
 - EconomyAPI
-- BedRock
+- BedrockEconomy
