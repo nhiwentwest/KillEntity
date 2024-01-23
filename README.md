@@ -27,6 +27,6 @@ worlds:
 - world
 ```
 
+[![](https://poggit.pmmp.io/shield.api/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
 [![](https://poggit.pmmp.io/shield.state/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
-
 
