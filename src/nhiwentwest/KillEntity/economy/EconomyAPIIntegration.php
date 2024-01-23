@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace nhiwentwest\KillEntity\economy;
 
-use onebone\economyapi\currency\CurrencyWon;
 use onebone\economyapi\EconomyAPI;
 
 use Closure;
@@ -36,7 +35,10 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	public function removeMoney(Player $player, float $money) : void{
 		$this->plugin->reduceMoney($player->getName(), $money);
 	}
-
+	public function format(float $money): string {
+		return sprintf("\xef\xbf\xa6%d", floor($money));
+	}
+	
 public function formatMoney(float $money) : string{
 		return $this->plugin->format($money);
 	}
