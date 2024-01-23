@@ -28,8 +28,7 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	 
 
 		public function getMonetaryUnit(): string {
-	
-		return $this->getCurrency()->getSymbol();
+	        return $this->getDefaultMoney->getCurrency()->getSymbol();
 	}
 
 	public function addMoney(Player $player, float $money) : void{
