@@ -26,14 +26,7 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 		assert(is_float($money));
 		$callback($money);
 	}
-	 
-public function getDefaultCurrency(Player $player): Currency {
-		return $this->plugin->getDefaultCurrency();
-	}
-	
-		public function getMonetaryUnit(): string {
-	        return $this->getDefaultCurrency->getCurrency()->getSymbol();
-	}
+
 
 	public function addMoney(Player $player, float $money) : void{
 		$this->plugin->addMoney($player->getName(), $money);
@@ -44,6 +37,6 @@ public function getDefaultCurrency(Player $player): Currency {
 	}
 
 	public function formatMoney(float $money) : string{
-		return $this->plugin->getMonetaryUnit() . number_format($money);
+		return $this->plugin->number_format($money);
 	}
 }
