@@ -37,7 +37,7 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	}
 
 public function formatMoney(float $money) : string{
-		return $this->plugin->($money);
+		return $this->plugin->format($money);
 	}
 
 }
