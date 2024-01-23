@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace nhiwentwest\KillEntity\economy;
 
 use onebone\economyapi\EconomyAPI;
+use onebone\economyapi\currency;
 use Closure;
 use pocketmine\player\Player;
 
