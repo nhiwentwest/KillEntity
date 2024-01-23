@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace nhiwentwest\KillEntity\economy;
 
 use onebone\economyapi\EconomyAPI;
-use onebone\economyapi\currency;
+use onebone\economyapi\currency\Currency;
 use Closure;
 use pocketmine\player\Player;
 
@@ -29,7 +29,7 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 	 
 
 		public function getMonetaryUnit(): string {
-	        return $this->getDefaultMoney->getCurrency()->getSymbol();
+	        return $this->getDefaultCurrency->getCurrency()->getSymbol();
 	}
 
 	public function addMoney(Player $player, float $money) : void{
