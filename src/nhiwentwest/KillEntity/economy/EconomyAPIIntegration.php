@@ -36,8 +36,8 @@ final class EconomyAPIIntegration implements EconomyIntegration{
 		$this->plugin->reduceMoney($player->getName(), $money);
 	}
 
-	public function formatMoney(float $money): string {
-        return $this->plugin->($money, 2, '.', ',');
-}
+public function formatMoney(float $money) : string{
+		return $this->plugin->($money);
+	}
 
 }
