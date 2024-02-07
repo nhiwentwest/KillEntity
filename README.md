@@ -27,6 +27,15 @@ worlds:
 - world
 ```
 
+## Donate
+
+I really appreciate your support.
+
+```yaml
+http://paypal.me/nhiwentwest
+```
+
+
 [![](https://poggit.pmmp.io/shield.api/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
 [![](https://poggit.pmmp.io/shield.state/KillEntity)](https://poggit.pmmp.io/p/KillEntity)
 
