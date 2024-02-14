@@ -48,9 +48,6 @@ class Zombie extends Task{
         // Spawn entity
         $entity = new $mobName($location);
 
-        if ($entity === null) {
-            return Main::$instance->getServer()->getLogger()->info("§cError§f spawning mob §d$mobName §r");
-        }
 
         $entity->spawnToAll();
     }
