@@ -5,6 +5,7 @@ namespace nhiwentwest\KillEntity\spawn;
 use pocketmine\entity\Entity;
 use pocketmine\scheduler\Task;
 use pocketmine\math\Vector3;
+use pocketmine\world\World;
 use nhiwentwest\KillEntity\Main;
 
 class Zombie extends Task{
@@ -21,10 +22,10 @@ class Zombie extends Task{
         $x = $config->get("x");
         $y = $config->get("y");
 
-        /** @var \pocketmine\level\Level $level */
-        $level = $this->plugin->getServer()->getDefaultLevel();
+        /** @var World $world */
+        $world = $this->plugin->getServer()->getDefaultLevel();
 
-        $entities = $level->getEntities();
+        $entities = $world->getEntities();
 
         // Count the number of Zombies in the specified area
         $zombieCount = 0;
@@ -42,14 +43,14 @@ class Zombie extends Task{
     }
 
     public function spawnZombie(float $x, float $y){
-        $level = $this->plugin->getServer()->getDefaultLevel();
+        $world = $this->plugin->getServer()->getDefaultLevel();
         $spawnX = $x + mt_rand(0, 16);
         $spawnY = $y + mt_rand(0, 16);
-        $spawnZ = $level->getHighestBlockAt($spawnX, $spawnY);
-        $zombie = Entity::createEntity("Zombie", $level->getChunk($spawnX >> 4, $spawnZ >> 4), Entity::createBaseNBT(new Vector3($spawnX, $spawnY, $spawnZ)));
+        $spawnZ = $world->getHighestBlockAt($spawnX, $spawnY);
+        $zombie = Entity::createEntity("Zombie", $world->getChunk($spawnX >> 4, $spawnZ >> 4), Entity::createBaseNBT(new Vector3($spawnX, $spawnY, $spawnZ)));
         
         if ($zombie !== null) {
-            foreach ($level->getPlayers() as $player) {
+            foreach ($world->getPlayers() as $player) {
                 $zombie->spawnTo($player);
             }
         }
