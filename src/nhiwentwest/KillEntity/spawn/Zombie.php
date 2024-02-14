@@ -17,7 +17,7 @@ class Zombie extends Task{
         $this->plugin->getScheduler()->scheduleRepeatingTask($this, 20 * 5); // Spawn Zombie every 5 seconds
     }
 
-    public function onRun(int $currentTick) : void{
+    public function onRun(int $currentTick = -1) : void {
         $config = $this->plugin->getConfig();
         $x = $config->get("x");
         $y = $config->get("y");
