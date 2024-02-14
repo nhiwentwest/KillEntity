@@ -1,13 +1,11 @@
 <?php
 
-namespace nhiwentwest\KillEntity;
+namespace KillEntity;
 
 use pocketmine\entity\Entity;
 use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
-use pocketmine\Server;
 
 class Zombie extends Task{
 
@@ -18,7 +16,7 @@ class Zombie extends Task{
         $this->plugin->getScheduler()->scheduleRepeatingTask($this, 20 * 5); // Spawn Zombie every 5 seconds
     }
 
-    public function onRun(int $currentTick){
+    public function onRun(int $currentTick) : void{
         $config = $this->plugin->getConfig();
         $x = $config->get("x");
         $y = $config->get("y");
