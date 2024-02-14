@@ -6,6 +6,7 @@ use pocketmine\entity\Entity;
 use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
+use nhiwentwest\KillEntity\Main;
 
 class Zombie extends Task{
 
