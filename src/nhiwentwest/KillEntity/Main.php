@@ -34,7 +34,9 @@ use nhiwentwest\KillEntity\spawn\Zombie;
 class Main extends PluginBase implements Listener {
     
     public $myConfig;
+    public static $instance; 
     public function onEnable(): void {
+        self::$instance = $this;
         EconomyManager::init($this);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
