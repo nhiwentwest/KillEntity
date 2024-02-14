@@ -25,7 +25,8 @@ class Zombie extends Task{
         
         // Lấy dữ liệu từ tệp cấu hình
         $mobName = Zombie;
-        $world = $server->getLevelByName($worlds);
+        $world = $this->plugin->getServer()->getWorldManager()->getWorlds;
+
         $configData = yaml_parse_file($configFilePath);
         if ($configData === false || !isset($configData['x1']) || !isset($configData['y1']) || !isset($configData['x2']) || !isset($configData['y2'])) {
             return Main::$instance->getServer()->getLogger()->info("§cError§f loading or invalid config file §d$configFilePath §r");
