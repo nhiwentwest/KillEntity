@@ -29,11 +29,18 @@ class Zombie extends Task{
 
         // Count the number of Zombies in the specified area
         $zombieCount = 0;
-        foreach ($entities as $entity) {
-            if ($entity instanceof \pocketmine\entity\Zombie && $entity->getX() >= $x && $entity->getX() <= $x + 16 && $entity->getY() >= $y && $entity->getY() <= $y + 16) {
-                $zombieCount++;
-            }
+     foreach ($entities as $entity) {
+    if ($entity instanceof \pocketmine\entity\Zombie) {
+        $entityLocation = $entity->getLocation();
+        $entityX = $entityLocation->x;
+        $entityY = $entityLocation->y;
+        if ($entityX >= $x && $entityX <= $x + 16 && $entityY >= $y && $entityY <= $y + 16) {
+            $zombieCount++;
         }
+    }
+}
+
+        
 
         // Check if the number of Zombies is less than 5
         if ($zombieCount < 5) {
