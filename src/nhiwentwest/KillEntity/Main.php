@@ -38,7 +38,7 @@ class Main extends PluginBase implements Listener {
         EconomyManager::init($this);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getServer()->getPluginManager()->registerEvents(new Zombie($this), $this);
+        $this->getScheduler()->scheduleRepeatingTask(new Zombie($this), 20 * 5);
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->myConfig = new Config($this->getDataFolder() . "config.yml", Config::YAML);
@@ -142,13 +142,7 @@ class Main extends PluginBase implements Listener {
          
             foreach ($allowedEntityTypes as $index => $entityData) {
                 $entityType = key($entityData);
-            
-                
-           //     if ($damager->getName() === $entityType) {
-                
-           
-         
-              
+ 
                   $economy = EconomyManager::get();
                     
                     $msg = $this->getConfig()->get("message");
@@ -171,12 +165,7 @@ class Main extends PluginBase implements Listener {
                                  
                                  
               });
-              
-                 
-
-                    
-                    
-           // }
+ 
                 }
                 }
                 }
