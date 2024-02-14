@@ -1,13 +1,13 @@
 <?php
 
-namespace KillEntity;
+namespace nhiwentwest\KillEntity\spawn;
 
 use pocketmine\entity\Entity;
 use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
-class zombie extends Task{
+class Zombie extends Task{
 
     private $plugin;
 
