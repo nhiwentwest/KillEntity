@@ -24,32 +24,38 @@ class Zombie extends Task{
         if ($configData === false || !isset($configData['x1']) || !isset($configData['y1']) || !isset($configData['x2']) || !isset($configData['y2'])) {
             return Main::$instance->getServer()->getLogger()->info("§cError§f loading or invalid config file §d$configFilePath §r");
         }
+// Lấy toạ độ từ config
+$xCoords = explode(", ", $configData['x']);
+$yCoords = explode(", ", $configData['y']);
 
-        // Lấy toạ độ từ config
-        $x1 = (int) $configData['x1'];
-        $y1 = (int) $configData['y1'];
-        $x2 = (int) $configData['x2'];
-        $y2 = (int) $configData['y2'];
+// Kiểm tra độ dài của mảng để đảm bảo chúng có đủ toạ độ
+if (count($xCoords) < 2 || count($yCoords) < 2) {
+    return Main::$instance->getServer()->getLogger()->info("§cError§f invalid coordinates in config file §d$configFilePath §r");
+}
 
-        // Xác định các giới hạn của hình vuông
-        $minX = min($x1, $x2);
-        $maxX = max($x1, $x2);
-        $minY = min($y1, $y2);
-        $maxY = max($y1, $y2);
+// Xác định các giới hạn của hình vuông
+$minX = min($xCoords);
+$maxX = max($xCoords);
+$minY = min($yCoords);
+$maxY = max($yCoords);
 
-        // Chọn một vị trí ngẫu nhiên trong hình vuông
-        $spawnX = mt_rand($minX, $maxX);
-        $spawnY = mt_rand($minY, $maxY);
-        $spawnZ = $world->getHighestBlockAt($spawnX, $spawnY);
+// Chọn một toạ độ ngẫu nhiên trong khu vực hình vuông
+$spawnX = mt_rand($minX, $maxX);
+$spawnY = mt_rand($minY, $maxY);
+$spawnZ = 0; // Sẽ cần phải thay đổi nếu bạn muốn sử dụng toạ độ z từ config
 
-        // Tạo một vị trí mới từ dữ liệu config
-        $location = new Location($spawnX, $spawnY, $spawnZ, $world, 0, 0);
+// Tạo một vị trí mới từ dữ liệu config
+$location = new Location($spawnX, $spawnY, $spawnZ, $world, 0, 0);
 
-        // Spawn entity
-        $entity = new $mobName($location);
+// Spawn entity
+$entity = new $mobName($location);
 
+if ($entity === null) {
+    return Main::$instance->getServer()->getLogger()->info("§cError§f spawning mob §d$mobName §r");
+}
 
-        $entity->spawnToAll();
+$entity->spawnToAll();
+
     }
 
     // Sử dụng spawnEntityInSquareFromConfig trong onRun
