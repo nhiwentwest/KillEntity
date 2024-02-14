@@ -6,6 +6,7 @@ use pocketmine\entity\Entity;
 use pocketmine\scheduler\Task;
 use pocketmine\math\Vector3;
 use pocketmine\world\World;
+use pocketmine\entity\Location;
 use nhiwentwest\KillEntity\Main;
 
 class Zombie extends Task{
@@ -17,49 +18,47 @@ class Zombie extends Task{
         $this->plugin->getScheduler()->scheduleRepeatingTask($this, 20 * 5); // Spawn Zombie every 5 seconds
     }
 
-    public function onRun(int $currentTick = -1) : void {
-        $config = $this->plugin->getConfig();
-        $x = $config->get("x");
-        $y = $config->get("y");
-
-        /** @var World $world */
-        $world = $this->plugin->getServer()->getDefaultLevel();
-
-        $entities = $world->getEntities();
-
-        // Count the number of Zombies in the specified area
-        $zombieCount = 0;
-     foreach ($entities as $entity) {
-    if ($entity instanceof \pocketmine\entity\Zombie) {
-        $entityLocation = $entity->getLocation();
-        $entityX = $entityLocation->x;
-        $entityY = $entityLocation->y;
-        if ($entityX >= $x && $entityX <= $x + 16 && $entityY >= $y && $entityY <= $y + 16) {
-            $zombieCount++;
+    public function spawnEntityInSquareFromConfig(string $mobName, World $world, string $configFilePath) {
+        // Lấy dữ liệu từ tệp cấu hình
+        $configData = yaml_parse_file($configFilePath);
+        if ($configData === false || !isset($configData['x1']) || !isset($configData['y1']) || !isset($configData['x2']) || !isset($configData['y2'])) {
+            return Main::$instance->getServer()->getLogger()->info("§cError§f loading or invalid config file §d$configFilePath §r");
         }
-    }
-}
 
-        
+        // Lấy toạ độ từ config
+        $x1 = (int) $configData['x1'];
+        $y1 = (int) $configData['y1'];
+        $x2 = (int) $configData['x2'];
+        $y2 = (int) $configData['y2'];
 
-        // Check if the number of Zombies is less than 5
-        if ($zombieCount < 5) {
-            // Spawn Zombie every 5 seconds
-            $this->spawnZombie($x, $y);
-        }
-    }
+        // Xác định các giới hạn của hình vuông
+        $minX = min($x1, $x2);
+        $maxX = max($x1, $x2);
+        $minY = min($y1, $y2);
+        $maxY = max($y1, $y2);
 
-    public function spawnZombie(float $x, float $y){
-        $world = $this->plugin->getServer()->getDefaultLevel();
-        $spawnX = $x + mt_rand(0, 16);
-        $spawnY = $y + mt_rand(0, 16);
+        // Chọn một vị trí ngẫu nhiên trong hình vuông
+        $spawnX = mt_rand($minX, $maxX);
+        $spawnY = mt_rand($minY, $maxY);
         $spawnZ = $world->getHighestBlockAt($spawnX, $spawnY);
-        $zombie = Entity::createEntity("Zombie", $world->getChunk($spawnX >> 4, $spawnZ >> 4), Entity::createBaseNBT(new Vector3($spawnX, $spawnY, $spawnZ)));
-        
-        if ($zombie !== null) {
-            foreach ($world->getPlayers() as $player) {
-                $zombie->spawnTo($player);
-            }
+
+        // Tạo một vị trí mới từ dữ liệu config
+        $location = new Location($spawnX, $spawnY, $spawnZ, $world, 0, 0);
+
+        // Spawn entity
+        $entity = new $mobName($location);
+
+        if ($entity === null) {
+            return Main::$instance->getServer()->getLogger()->info("§cError§f spawning mob §d$mobName §r");
         }
+
+        $entity->spawnToAll();
+    }
+
+    // Sử dụng spawnEntityInSquareFromConfig trong onRun
+    public function onRun(int $currentTick = -1) : void {
+        $configFilePath = "path/to/your/config.yml"; // Đường dẫn tới tệp cấu hình
+        $world = $this->plugin->getServer()->getDefaultLevel();
+        $this->spawnEntityInSquareFromConfig("Zombie", $world, $configFilePath);
     }
 }
