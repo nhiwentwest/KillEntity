@@ -7,7 +7,7 @@ use pocketmine\scheduler\Task;
 use pocketmine\level\Level;
 use pocketmine\math\Vector3;
 
-class Zombie extends Task{
+class zombie extends Task{
 
     private $plugin;
 
