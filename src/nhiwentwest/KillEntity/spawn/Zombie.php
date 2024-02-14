@@ -8,7 +8,6 @@ use pocketmine\math\Vector3;
 use pocketmine\world\World;
 use pocketmine\entity\Location;
 use nhiwentwest\KillEntity\Main;
-use pocketmine\player\Player;
 
 class Zombie extends Task{
 
