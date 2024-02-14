@@ -28,8 +28,8 @@ use pocketmine\world\World;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\event\player\PlayerDeathEvent;
+use nhiwentwest\KillEntity\Zombie;
 
-    
 
 class Main extends PluginBase implements Listener {
     
@@ -38,10 +38,11 @@ class Main extends PluginBase implements Listener {
         EconomyManager::init($this);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->getServer()->getPluginManager()->registerEvents(new Zombie($this), $this);
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->myConfig = new Config($this->getDataFolder() . "config.yml", Config::YAML);
-    
+     
       
         }
      
