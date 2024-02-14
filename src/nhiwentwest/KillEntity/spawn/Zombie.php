@@ -20,6 +20,8 @@ class Zombie extends Task{
 
     public function spawnEntityInSquareFromConfig(string $mobName, World $world, string $configFilePath) {
         // Lấy dữ liệu từ tệp cấu hình
+        $mobName = Zombie;
+        $world = $server->getLevelByName($worlds);
         $configData = yaml_parse_file($configFilePath);
         if ($configData === false || !isset($configData['x1']) || !isset($configData['y1']) || !isset($configData['x2']) || !isset($configData['y2'])) {
             return Main::$instance->getServer()->getLogger()->info("§cError§f loading or invalid config file §d$configFilePath §r");
@@ -50,9 +52,6 @@ $location = new Location($spawnX, $spawnY, $spawnZ, $world, 0, 0);
 // Spawn entity
 $entity = new $mobName($location);
 
-if ($entity === null) {
-    return Main::$instance->getServer()->getLogger()->info("§cError§f spawning mob §d$mobName §r");
-}
 
 $entity->spawnToAll();
 
