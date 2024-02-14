@@ -16,10 +16,12 @@ class Zombie extends Task{
     public function __construct(Main $plugin){
         $this->plugin = $plugin;
         $this->plugin->getScheduler()->scheduleRepeatingTask($this, 20 * 5); // Spawn Zombie every 5 seconds
-        $this->plugin->getServer()->getWorldManager()->getWorlds() as $world;
+     
     }
 
     public function spawnEntityInSquareFromConfig(string $mobName, World $world, string $configFilePath) {
+
+        
         
         // Lấy dữ liệu từ tệp cấu hình
         $mobName = Zombie;
