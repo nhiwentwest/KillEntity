@@ -27,12 +27,15 @@ use pocketmine\level\Level;
 use pocketmine\world\World;
 use pocketmine\entity\Location;
 use pocketmine\math\Vector3;
-use nhiwentwest\KillEntity\economy\EconomyIntegration;
-use nhiwentwest\KillEntity\economy\EconomyManager;
+
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\permission\DefaultPermissions;
 
 
+
+use nhiwentwest\KillEntity\economy\EconomyIntegration;
+use nhiwentwest\KillEntity\economy\EconomyManager;
+use nhiwentwest\KillEntity\Behav\Coords;
 
 class Main extends PluginBase implements Listener {
     
@@ -40,9 +43,12 @@ class Main extends PluginBase implements Listener {
     public static $instance; 
     public $spawnobj;
     public $classes;
+    public $coordsobj;
+	
     public function onEnable(): void {
         self::$instance = $this;
         EconomyManager::init($this);
+	$this->coordsobj = (new Coords);    
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         @mkdir($this->getDataFolder());
