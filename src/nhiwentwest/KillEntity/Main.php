@@ -30,6 +30,7 @@ use pocketmine\math\Vector3;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\event\player\PlayerDeathEvent;
+use pocketmine\permission\DefaultPermissions;
 
 
 
