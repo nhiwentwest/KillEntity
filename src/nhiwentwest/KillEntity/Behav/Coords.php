@@ -45,10 +45,7 @@ class Coords {
 
 		$pos = $this->getSaferSpawn($entity->getPosition(), $entity->getWorld(), 15);
 
-		if ($entity->isFlying() == true) {
-			$pos->add(0, 8, 0);
-		}
-
+	
 		if ($entity->isSwimming() == true) {
 			$pos->add(0, mt_rand(-8, 8), 0);
 		}
