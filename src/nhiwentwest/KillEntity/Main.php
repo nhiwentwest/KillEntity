@@ -25,6 +25,9 @@ use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\permission\DefaultPermissions;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
+use pocketmine\nbt\tag\CompoundTag;
+use pocketmine\math\Vector3;
+
 
 class Main extends PluginBase implements Listener {
     
