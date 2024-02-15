@@ -25,6 +25,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
 use pocketmine\level\Level;
 use pocketmine\world\World;
+use pocketmine\entity\Location;
+use pocketmine\math\Vector3;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\event\player\PlayerDeathEvent;
@@ -50,22 +52,6 @@ class Main extends PluginBase implements Listener {
       
         }
 
-
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
-    if ($label === "zombie") {
-        // Kiểm tra xem lệnh được gửi từ player hay từ console
-        if (!$sender instanceof Player) {
-            $sender->sendMessage("§cThat command cannot be done from the console§r");
-            return true;
-        }
-
-        // Gọi phương thức spawnEntity() trong đối tượng $this->spawnobj để spawn một con zombie
-        $this->spawnobj->spawnEntity("Zombie", $sender->getWorld(), $sender->getPosition());
-        return true;
-    }
-
-    return false;
-}
 
      
         
@@ -200,6 +186,40 @@ class Main extends PluginBase implements Listener {
 
     
     }
+
+    	public function spawnEntity(string $mobname, World $world, Vector3 $pos) {
+		$location = new Location($pos->x, $pos->y, $pos->z, $world, 0, 0);
+
+		if (Main::$instance->attrobj->isFlying($mobname)) {
+			$location = new Location($pos->x, $pos->y+8, $pos->z, $world, 0, 0);
+		}
+
+		$entity = new Main::$instance->classes[$mobname]($location);
+
+		if ($entity == null) {
+			return Main::$instance->getServer()->getLogger()->info("§cError§f spawning mob §d$mobname §r");
+		}
+
+		$entity->spawnToAll();
+	}
+
+
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+    if ($label === "zombie") {
+        // Kiểm tra xem lệnh được gửi từ player hay từ console
+        if (!$sender instanceof Player) {
+            $sender->sendMessage("§cThat command cannot be done from the console§r");
+            return true;
+        }
+
+        // Gọi phương thức spawnEntity() trong đối tượng $this->spawnobj để spawn một con zombie
+        $this->spawnobj->spawnEntity("Zombie", $sender->getWorld(), $sender->getPosition());
+        return true;
+    }
+
+    return false;
+}
+
     
    }
 
