@@ -64,7 +64,9 @@ public function spawnCustomZombie() : void {
 
     // Lấy thế giới mặc định
 	
-    $world = Server::getInstance()->getWorldManager();
+$worldName = "your_world_name"; // Thay "your_world_name" bằng tên thế giới của bạn
+$worldManager = Server::getInstance()->getWorldManager();
+$world = $worldManager->getWorldByName($worldName);
     // Kiểm tra xem thế giới có tồn tại không
    
 
