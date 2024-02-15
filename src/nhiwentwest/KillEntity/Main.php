@@ -62,8 +62,20 @@ class Main extends PluginBase implements Listener {
         return;
     }
 
-    // Tạo một đối tượng Zombie ở tọa độ đã thiết lập
-    $zombie = new Zombie($this->getServer()->getDefaultLevel()->getChunk($x >> Chunk::COORD_BIT_SIZE, $z >> Chunk::COORD_BIT_SIZE), Entity::createBaseNBT(new Vector3($x, $y, $z)));
+// Lấy hoặc tải chunk tại tọa độ đã thiết lập
+$chunk = $this->getServer()->getDefaultLevel()->getOrLoadChunkAtPosition(new Vector3($x, $y, $z));
+
+// Kiểm tra xem chunk đã được tải hoặc có sẵn không
+if ($chunk !== null) {
+    // Chunk được tải hoặc có sẵn, bạn có thể tạo Zombie entity tại đây
+
+    // Tạo đối tượng Zombie với chunk đã tải và vị trí đã thiết lập
+    $zombie = new Zombie($chunk, Entity::createBaseNBT(new Vector3($x, $y, $z)));
+} else {
+    // Xử lý trường hợp chunk không được tải hoặc không tồn tại tại vị trí được cung cấp
+    // Bạn có thể log hoặc xử lý thông báo lỗi ở đây
+}
+
 
     // Thêm Zombie vào thế giới
     $zombie->spawnToAll();
