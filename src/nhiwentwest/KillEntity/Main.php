@@ -47,7 +47,25 @@ class Main extends PluginBase implements Listener {
 
 
      
-        
+        public function spawnCustomZombie() : void {
+    // Đọc tọa độ từ file cấu hình
+    $x = $this->getConfig()->get("x");
+    $y = $this->getConfig()->get("y");
+    $z = $this->getConfig()->get("z");
+
+    // Kiểm tra xem các giá trị đã được đọc thành công chưa
+    if ($x === null || $y === null || $z === null) {
+        $this->getLogger()->warning("Không thể đọc tọa độ từ file cấu hình.");
+        return;
+    }
+
+    // Tạo một đối tượng Zombie ở tọa độ đã thiết lập
+    $zombie = new Zombie($this->getServer()->getDefaultLevel()->getChunk($x >> Chunk::COORD_BIT_SIZE, $z >> Chunk::COORD_BIT_SIZE), Entity::createBaseNBT(new Vector3($x, $y, $z)));
+
+    // Thêm Zombie vào thế giới
+    $zombie->spawnToAll();
+}
+
 
         public function onEntityDeath(EntityDeathEvent $event): void {
             
@@ -66,6 +84,7 @@ class Main extends PluginBase implements Listener {
                       
                 if(in_array($levelName, $this->getConfig()->get("worlds"))){
                 $allowedEntityTypes = $this->getConfig()->get("animals");
+		$this->getPlugin()->spawnCustomZombie();
              
                 foreach ($allowedEntityTypes as $index => $entityData) {
                     $entityType = key($entityData);
