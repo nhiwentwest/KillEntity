@@ -35,9 +35,11 @@ class Main extends PluginBase implements Listener {
     
     public $myConfig;
     public static $instance; 
+    public $spawnobj;
     public function onEnable(): void {
         self::$instance = $this;
         EconomyManager::init($this);
+        $this->spawnobj = (new Spawn);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getScheduler()->scheduleRepeatingTask(new Zombie($this), 20 * 5);
@@ -47,6 +49,24 @@ class Main extends PluginBase implements Listener {
      
       
         }
+
+
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+    if ($label === "zombie") {
+        // Kiểm tra xem lệnh được gửi từ player hay từ console
+        if (!$sender instanceof Player) {
+            $sender->sendMessage("§cThat command cannot be done from the console§r");
+            return true;
+        }
+
+        // Gọi phương thức spawnEntity() trong đối tượng $this->spawnobj để spawn một con zombie
+        $this->spawnobj->spawnEntity("Zombie", $sender->getWorld(), $sender->getPosition());
+        return true;
+    }
+
+    return false;
+}
+
      
         
 
