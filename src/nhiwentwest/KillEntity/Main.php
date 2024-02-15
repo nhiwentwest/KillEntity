@@ -27,6 +27,7 @@ use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\math\Vector3;
+use pocketmine\entitiy\Zombie;
 
 
 class Main extends PluginBase implements Listener {
