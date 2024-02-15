@@ -14,7 +14,7 @@ use nhiwentwest\KillEntity\Main;
 class Motion {
 	public function tick(MobsEntity $entity) {
 		$timer = $entity->getTimer() - 1;
-		$flying = $entity->isFlying();
+
 
 		$entity->setTimer($timer);
 
@@ -43,7 +43,7 @@ class Motion {
 		$motion = $entity->getMotion();
 		$location = $entity->getLocation();
 		$swimming = $entity->isSwimming();
-		$flying = $entity->isFlying();
+	
 
 		if (!$entity->onGround and $motion->y < 0 and $flying == false and $swimming == false) {
 			$motion->y *= 0.6;
@@ -96,9 +96,7 @@ class Motion {
 			$entity->damageTag();
 		}
 
-		if ($entity->isFlying() == true) {
-			return;
-		}
+	
 
 		if ($entity->isSwimming() == true) {
 			if (!$entity->isUnderwater()) {
@@ -135,7 +133,7 @@ class Motion {
 		$motion = $entity->getMotion();
 		$speed = $entity->getMovementSpeed();
 		$speed = 1.0;
-		$flying = $entity->isFlying();
+		
 
 		$x = $dest->x - $epos->x;
 		$y = $dest->y - $epos->y;
