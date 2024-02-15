@@ -64,7 +64,7 @@ public function spawnCustomZombie() : void {
 
     // Lấy thế giới mặc định
 	
-    $world = Server::getInstance()->getWorld()->getFolderName();
+    $world = Server::getInstance()->getWorldManager();
     // Kiểm tra xem thế giới có tồn tại không
     if ($world === null) {
         $this->getLogger()->warning("Không thể truy cập vào thế giới mặc định.");
