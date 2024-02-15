@@ -193,7 +193,7 @@ Server::getInstance()->getLogger()->info("The world is not activated");
             }
         
                    else {
- $damager->sendMessage("You don't have permission.");
+ $player->sendMessage("You don't have permission.");
 		    
 	    }
 
