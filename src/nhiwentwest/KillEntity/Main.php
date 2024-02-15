@@ -169,6 +169,10 @@ class Main extends PluginBase implements Listener {
  
                 }
                 }
+	    else {
+Server::getInstance()->getLogger()->info("The world is not activated");
+		    
+	    }
                 }
             
               
