@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace nhiwentwest\KillEntity\Behav;
+namespace nhiwentwest\KillEntity\Main;
 
 use pocketmine\data\bedrock\LegacyEntityIdToStringIdMap;
 use pocketmine\entity\EntityDataHelper;
