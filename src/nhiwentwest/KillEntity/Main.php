@@ -111,7 +111,7 @@ class Main extends PluginBase implements Listener {
                     }
 
 			    else {
-Server::getInstance()->getLogger()->info("The world is not activated");
+Server::getInstance()->getLogger()->info("KillEntity: The world is not activated");
 		    
 	    }
 
@@ -119,7 +119,7 @@ Server::getInstance()->getLogger()->info("The world is not activated");
                 }
 
 		        else {
- $damager->sendMessage("You don't have permission.");
+ $damager->sendMessage("You don't have permission to earn coin.");
 		    
 	    }
 		    
@@ -183,7 +183,7 @@ Server::getInstance()->getLogger()->info("The world is not activated");
                 }
                 }
 	    else {
-Server::getInstance()->getLogger()->info("The world is not activated");
+Server::getInstance()->getLogger()->info("KillEntity: The world is not activated");
 		    
 	    }
                 }
@@ -193,7 +193,7 @@ Server::getInstance()->getLogger()->info("The world is not activated");
             }
         
                    else {
- $player->sendMessage("You don't have permission.");
+ $player->sendMessage("You don't have permission to earn coin.");
 		    
 	    }
 
