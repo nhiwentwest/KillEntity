@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace nhiwentwest\KillEntity\Main;
+namespace nhiwentwest\KillEntity\Behav;
 
 use pocketmine\data\bedrock\LegacyEntityIdToStringIdMap;
 use pocketmine\entity\EntityDataHelper;
@@ -10,7 +10,7 @@ use pocketmine\entity\EntityFactory;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\world\World;
 use nhiwentwest\KillEntity\Entities\Zombie;
-
+use nhiwentwest\KillEntity\Main;
 
 class Registrations {
 	public function registerEntities() {
