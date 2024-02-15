@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use nhiwentwest\KillEntity\Entities\MobsEntity;
+use nhiwentwest\KillEntity\Main;
 
 class Motion {
 	public function tick(MobsEntity $entity) {
