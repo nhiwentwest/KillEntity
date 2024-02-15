@@ -18,3 +18,4 @@ class Zombie extends Task{
         $this->plugin->getScheduler()->scheduleRepeatingTask($this, 20 * 5); // Spawn Zombie every 5 seconds
      
     }
+}
