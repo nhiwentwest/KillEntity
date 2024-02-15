@@ -130,44 +130,6 @@ class MobsEntity extends Living {
 		return parent::entityBaseTick($diff);
 	}
 
-	public function mortalEnemy() : string {
-		return (new Attributes)->getMortalEnemy($this->getName());
-	}
+	
 
-	public function catchesFire() : bool {
-		return (new Attributes)->canCatchFire($this->getName());
-	}
-
-	public function isFlying() : bool {
-		return (new Attributes)->isFlying($this->getName());
-	}
-
-	public function isJumping() : bool {
-		return (new Attributes)->isJumping($this->getName());
-	}
-
-	public function isHostile() : bool {
-		return (new Attributes)->isHostile($this->getName());
-	}
-
-	public function isNether() : bool {
-		return (new Attributes)->isNetherMob($this->getName());
-	}
-
-	public function isSnow() : bool {
-		return (new Attributes)->isSnowMob($this->getName());
-	}
-
-	public function isSwimming() : bool {
-		$swim = (new Attributes)->isSwimming($this->getName());
-		$ticks = $this->getAirSupplyTicks();
-		$maxticks = $this->getMaxAirSupplyTicks();
-		if ($swim == true and $this->isBreathing() == false and $ticks < ($maxticks/2)) {
-			$this->setAirSupplyTicks($maxticks);
-		}
-		return $swim;
-	}
-
-	public function fall(float $fallDistance) : void {
-	}
 }
