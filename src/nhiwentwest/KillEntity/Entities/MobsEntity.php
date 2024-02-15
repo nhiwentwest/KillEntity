@@ -41,9 +41,7 @@ class MobsEntity extends Living {
 		$this->destination = new Vector3(0, 0, 0);
 		$this->timer = -1;
 
-		if ($this->isFlying() == true or $this->isSwimming() == true) {
-			$this->setHasGravity(false);
-		}
+		
 
 		parent::initEntity($nbt);
 	}
