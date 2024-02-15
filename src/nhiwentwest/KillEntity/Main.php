@@ -41,7 +41,6 @@ class Main extends PluginBase implements Listener {
     public function onEnable(): void {
         self::$instance = $this;
         EconomyManager::init($this);
-        $this->spawnobj = (new Spawn);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         @mkdir($this->getDataFolder());
