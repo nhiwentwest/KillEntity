@@ -30,7 +30,7 @@ use pocketmine\math\Vector3;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\event\player\PlayerDeathEvent;
-use nhiwentwest\KillEntity\spawn\Zombie;
+
 
 
 class Main extends PluginBase implements Listener {
