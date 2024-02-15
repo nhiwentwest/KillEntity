@@ -22,7 +22,7 @@ class Motion {
 			return $this->wait($entity);
 		}
 
-		if ($timer == 0 and $flying == false and mt_rand(0, 1) == 1 and $entity->getTargetEntity() === null) {
+		if ($timer == 0 and mt_rand(0, 1) == 1 and $entity->getTargetEntity() === null) {
 			return $entity->setTimer(mt_rand(100, 600));
 		}
 
@@ -45,7 +45,7 @@ class Motion {
 		$swimming = $entity->isSwimming();
 	
 
-		if (!$entity->onGround and $motion->y < 0 and $flying == false and $swimming == false) {
+		if (!$entity->onGround and $motion->y < 0 and $swimming == false) {
 			$motion->y *= 0.6;
 		}
 
@@ -142,7 +142,7 @@ class Motion {
 		if ($x ** 2 + $z ** 2 < 0.7) {
 			if ($entity->getTargetEntity() === null) {
 				$motion->y = 0;
-				$entity->setTimer($flying == true ? 100 : 200);
+
 				$entity->setDestination(new Vector3(0, 0, 0));
 			}
 		} else {
