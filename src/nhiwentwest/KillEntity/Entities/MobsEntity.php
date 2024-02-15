@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace tgwaste\Mobs\Entities;
+namespace nhiwentwest\KillEntity\Entities;
 
 use pocketmine\data\bedrock\LegacyEntityIdToStringIdMap;
 use pocketmine\entity\Entity;
@@ -11,9 +11,9 @@ use pocketmine\entity\Living;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use tgwaste\Mobs\Attributes;
-use tgwaste\Mobs\Main;
-use tgwaste\Mobs\Motion;
-use tgwaste\Mobs\Registrations;
+use nhiwentwest\KillEntity\Main;
+use nhiwentwest\KillEntity\Behav\Motion;
+use tgwaste\KillEntity\Behav\Registrations;
 
 class MobsEntity extends Living {
 	const TYPE_ID = "";
