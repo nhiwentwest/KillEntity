@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace tgwaste\Mobs\Entities;
+namespace nhiwentwest\KillEntity\Entities;
 
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 
