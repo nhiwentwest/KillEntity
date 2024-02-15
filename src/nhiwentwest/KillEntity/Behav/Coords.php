@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace tgwaste\Mobs;
+namespace nhiwentwest\KillEntity\Behav;
 
 use pocketmine\block\Water;
 use pocketmine\math\Vector3;
 use pocketmine\world\World;
 use pocketmine\player\Player;
-use tgwaste\Mobs\Entities\MobsEntity;
+use nhiwentwest\KillEntity\Main;
+use nhiwentwest\KillEntity\Entities\MobsEntity;
 
 class Coords {
 	public function getSaferSpawn(Vector3 $start, World $world, int $radius) : Vector3 {
