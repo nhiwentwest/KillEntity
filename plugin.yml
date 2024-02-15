@@ -8,6 +8,11 @@ description: A plugin that adds money to a player when they kill an entity.
 permissions:
   killentity.plugin:
     default: true
+commands:
+  zombie:
+    usage: "/zombie"
+    description: "Summon a Zombie"
+    permission: killentity.zombie    
 
 softdepend:
 - EconomyAPI
