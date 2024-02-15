@@ -38,6 +38,7 @@ class Main extends PluginBase implements Listener {
     public $myConfig;
     public static $instance; 
     public $spawnobj;
+    public $classes;
     public function onEnable(): void {
         self::$instance = $this;
         EconomyManager::init($this);
