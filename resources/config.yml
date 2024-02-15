@@ -5,8 +5,9 @@ animals:
 # 1 for sending pop-ups
 # 2 for sending messages
 # 3 to turn off message notifications
-message: 2
-# enter the percentage of the money amount that you want the player to lose when they die in combat.
+message: 1
+# enter the percentage of the money amount that you want the player to lose when they die in combat
+# enter 0 for deactive this feature
 percent: 50
 # enter the name world that you want to be deactivated
 worlds:
