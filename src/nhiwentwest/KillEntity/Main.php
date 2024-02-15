@@ -27,8 +27,8 @@ use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\math\Vector3;
-use pocketmine\entitiy\Zombie;
-
+use pocketmine\entity\Zombie;
+use pocketmine\entity\Location;
 
 class Main extends PluginBase implements Listener {
     
@@ -50,8 +50,7 @@ class Main extends PluginBase implements Listener {
         }
 
 
-     
-        public function spawnCustomZombie() : void {
+public function spawnCustomZombie() : void {
     // Đọc tọa độ từ file cấu hình
     $x = $this->getConfig()->get("x");
     $y = $this->getConfig()->get("y");
@@ -63,26 +62,26 @@ class Main extends PluginBase implements Listener {
         return;
     }
 
-// Lấy hoặc tải chunk tại tọa độ đã thiết lập
-$chunk = $this->getServer()->getDefaultLevel()->getOrLoadChunkAtPosition(new Vector3($x, $y, $z));
+    // Lấy thế giới mặc định
+    $world = $this->getServer()->getDefaultLevel();
 
-// Kiểm tra xem chunk đã được tải hoặc có sẵn không
-if ($chunk !== null) {
-    // Chunk được tải hoặc có sẵn, bạn có thể tạo Zombie entity tại đây
+    // Kiểm tra xem thế giới có tồn tại không
+    if ($world === null) {
+        $this->getLogger()->warning("Không thể truy cập vào thế giới mặc định.");
+        return;
+    }
 
-    // Tạo đối tượng Zombie với chunk đã tải và vị trí đã thiết lập
-    $zombie = new Zombie($chunk, Entity::createBaseNBT(new Vector3($x, $y, $z)));
-} else {
-    // Xử lý trường hợp chunk không được tải hoặc không tồn tại tại vị trí được cung cấp
-    // Bạn có thể log hoặc xử lý thông báo lỗi ở đây
-}
+    // Tạo đối tượng Vector3 từ tọa độ đã đọc
+    $pos = new Vector3($x, $y, $z);
 
+    // Tạo một đối tượng Zombie với vị trí, thế giới, hướng yaw và pitch
+    $zombie = new Zombie($pos, $world);
 
-    // Thêm Zombie vào thế giới
+    // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
     $zombie->spawnToAll();
 }
 
-
+ 
         public function onEntityDeath(EntityDeathEvent $event): void {
             
     
