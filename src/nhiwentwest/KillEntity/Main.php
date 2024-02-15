@@ -19,20 +19,10 @@ use InvalidArgumentException;
 use pocketmine\event\entity\EntityDeathEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\console\ConsoleCommandSender;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
 use pocketmine\utils\TextFormat;
-use pocketmine\level\Level;
 use pocketmine\world\World;
-use pocketmine\entity\Location;
-use pocketmine\math\Vector3;
-
 use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\permission\DefaultPermissions;
-
-
-
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 
