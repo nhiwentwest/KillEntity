@@ -109,7 +109,20 @@ class Main extends PluginBase implements Listener {
                         }
                         }
                     }
+
+			    else {
+Server::getInstance()->getLogger()->info("The world is not activated");
+		    
+	    }
+
+			
                 }
+
+		        else {
+ $damager->sendMessage("You don't have permission.");
+		    
+	    }
+		    
             }
         }
     }
@@ -179,7 +192,10 @@ Server::getInstance()->getLogger()->info("The world is not activated");
             
             }
         
-           
+                   else {
+ $damager->sendMessage("You don't have permission.");
+		    
+	    }
 
     
     }
