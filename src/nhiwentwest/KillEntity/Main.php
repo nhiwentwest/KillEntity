@@ -63,8 +63,8 @@ public function spawnCustomZombie() : void {
     }
 
     // Lấy thế giới mặc định
-    $world = $this->getServer()->getDefaultLevel();
-
+	 $worldName = "world";
+    $world = Server::getInstance()->getLevelByName($worldName);
     // Kiểm tra xem thế giới có tồn tại không
     if ($world === null) {
         $this->getLogger()->warning("Không thể truy cập vào thế giới mặc định.");
@@ -99,7 +99,7 @@ public function spawnCustomZombie() : void {
                       
                 if(in_array($levelName, $this->getConfig()->get("worlds"))){
                 $allowedEntityTypes = $this->getConfig()->get("animals");
-		$this->getPlugin()->spawnCustomZombie();
+	
              
                 foreach ($allowedEntityTypes as $index => $entityData) {
                     $entityType = key($entityData);
