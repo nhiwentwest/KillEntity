@@ -44,7 +44,6 @@ class Main extends PluginBase implements Listener {
         $this->spawnobj = (new Spawn);
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getScheduler()->scheduleRepeatingTask(new Zombie($this), 20 * 5);
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
         $this->myConfig = new Config($this->getDataFolder() . "config.yml", Config::YAML);
