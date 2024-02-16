@@ -5,6 +5,13 @@ author: nhiwentwest
 main: nhiwentwest\KillEntity\Main
 description: A plugin that adds money to a player when they kill an entity.
 
+
+commands:
+  zombie:
+    usage: "/zombie"
+    description: "Summon a zombie"
+    permission: killentity.zombie
+    
 permissions:
   killentity.plugin:
     default: true
