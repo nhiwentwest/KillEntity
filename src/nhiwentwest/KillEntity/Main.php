@@ -88,36 +88,6 @@ return true;
 	}
 	
 
-
-public function spawnCustomZombie() : void {
-    // Đọc tọa độ từ file cấu hình
-    $x = $this->getConfig()->get("x");
-    $y = $this->getConfig()->get("y");
-    $z = $this->getConfig()->get("z");
-
-    // Kiểm tra xem các giá trị đã được đọc thành công chưa
-    if ($x === null || $y === null || $z === null) {
-        $this->getLogger()->warning("Không thể đọc tọa độ từ file cấu hình.");
-        return;
-    }
-
-    // Lấy thế giới mặc định
-	
-$worldName = "world"; // Thay "your_world_name" bằng tên thế giới của bạn
-$worldManager = Server::getInstance()->getWorldManager();
-$world = $worldManager->getWorldByName($worldName);
-    // Kiểm tra xem thế giới có tồn tại không
-   
-
-    // Tạo đối tượng Vector3 từ tọa độ đã đọc
-    $pos = new Vector3($x, $y, $z);
-  
-    $zombie = new Zombie($pos, $world);
-
-    // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
-    $zombie->spawnToAll();
-}
-
  
         public function onEntityDeath(EntityDeathEvent $event): void {
             
