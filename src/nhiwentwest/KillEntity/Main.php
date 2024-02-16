@@ -90,6 +90,7 @@ $world = $worldManager->getWorldByName($worldName);
 
     // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
     $zombie->spawnToAll();
+	  $this->getLogger()->info("Zombie had been summon.");
 return true;
 }
 	return true;
