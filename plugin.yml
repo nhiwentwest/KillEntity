@@ -16,7 +16,7 @@ permissions:
   killentity.plugin:
     default: true
   killentity.zombie:
-    default: false
+    default: true
 
 softdepend:
 - EconomyAPI
