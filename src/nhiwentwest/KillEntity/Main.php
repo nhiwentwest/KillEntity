@@ -84,6 +84,11 @@ $x = mt_rand(min($x1, $x2), max($x1, $x2));
 $y = mt_rand(min($y1, $y2), max($y1, $y2));
 $z = mt_rand(min($z1, $z2), max($z1, $z2));
 
+    $x = (float) $x;
+    $y = (float) $y;
+    $z = (float) $z;
+   
+
    
     // Lấy thế giới mặc định
 	
