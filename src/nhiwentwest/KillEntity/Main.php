@@ -72,15 +72,10 @@ $world = $worldManager->getWorldByName($worldName);
 
     // Tạo đối tượng Vector3 từ tọa độ đã đọc
     $pos = new Vector3($x, $y, $z);
-    $targetPosition = new Vector3($targetX, $targetY, $targetZ); // Thay thế $targetX, $targetY, $targetZ bằng vị trí của mục tiêu
+  
 
-// Tính toán hướng yaw và pitch dựa trên vị trí của đối tượng và mục tiêu
-$dx = $targetPosition->x - $pos->x;
-$dy = $targetPosition->y - $pos->y;
-$dz = $targetPosition->z - $pos->z;
-
-$yaw = atan2($dz, $dx) / M_PI * 180 - 90;
-$pitch = -atan2($dy, sqrt($dx * $dx + $dz * $dz)) / M_PI * 180;
+$yaw = 0;
+$pitch = 0;
 
     $zombie = new Zombie($pos, $world, $yaw, $pitch);
 
