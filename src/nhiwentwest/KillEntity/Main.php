@@ -30,6 +30,9 @@ use pocketmine\math\Vector3;
 use pocketmine\entity\Zombie;
 use pocketmine\entity\Location;
 
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
+
 class Main extends PluginBase implements Listener {
     
     public $myConfig;
