@@ -68,6 +68,9 @@ if ($label === "zombie") {
     $x = (float) $x;
     $y = (float) $y;
     $z = (float) $z;
+
+   $yaw = 0.0; // Đặt yaw thành 0
+    $pitch = 0.0; // Đặt pitch thành 0
 	
 
    
@@ -77,8 +80,13 @@ $worldName = "world"; // Thay "your_world_name" bằng tên thế giới của b
 $worldManager = Server::getInstance()->getWorldManager();
 $world = $worldManager->getWorldByName($worldName);
    $pos = new Vector3($x, $y, $z);
-  
-    $zombie = new Zombie($pos, $world);
+
+
+    $location = new Location($x, $y, $z, $world, $yaw, $pitch);
+	
+    $zombie = new Zombie($location);
+
+	
 
     // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
     $zombie->spawnToAll();
