@@ -53,13 +53,15 @@ class Main extends PluginBase implements Listener {
         }
 
 
-	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
-		if ($sender instanceof Player and !$sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
+public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+		
+	if ($sender instanceof Player and !$sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
 			$sender->sendMessage("§cYou do not have permission to use this commands§r");
 			return true;
 		}
+	
 if ($label === "zombie") {
-$x = $this->getConfig()->get("x");
+    $x = $this->getConfig()->get("x");
     $y = $this->getConfig()->get("y");
     $z = $this->getConfig()->get("z");
 
@@ -82,6 +84,7 @@ $world = $worldManager->getWorldByName($worldName);
     $zombie->spawnToAll();
 return true;
 }
+	return true;
 	}
 	
 
