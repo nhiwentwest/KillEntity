@@ -80,10 +80,10 @@ if ($label === "zombie") {
    $yaw = 0.0; // Đặt yaw thành 0
    $pitch = 0.0; // Đặt pitch thành 0
 	
-$x = mt_rand(min($x1, $x2), max($x1, $x2));
-$y = mt_rand(min($y1, $y2), max($y1, $y2));
-$z = mt_rand(min($z1, $z2), max($z1, $z2));
-
+$x = mt_rand(intval(min($x1, $x2)), intval(max($x1, $x2)));
+$y = mt_rand(intval(min($y1, $y2)), intval(max($y1, $y2)));
+$z = mt_rand(intval(min($z1, $z2)), intval(max($z1, $z2)));
+	
     $x = (float) $x;
     $y = (float) $y;
     $z = (float) $z;
