@@ -10,9 +10,16 @@ message: 1
 # enter 0 for deactive this feature
 percent: 50
 # enter the name world that you want to be deactivated
-x: 31
-y: 42
-z: -23
+x1: 31
+y1: 72
+z1: -23
+
+x2: 45
+y2: 72
+z2: -10
+
+
+
 worlds:
 - world
 
