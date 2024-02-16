@@ -64,6 +64,11 @@ if ($label === "zombie") {
     $x = $this->getConfig()->get("x");
     $y = $this->getConfig()->get("y");
     $z = $this->getConfig()->get("z");
+    
+    $x = (float) $x;
+    $y = (float) $y;
+    $z = (float) $z;
+	
 
     // Kiểm tra xem các giá trị đã được đọc thành công chưa
     if ($x === null || $y === null || $z === null) {
