@@ -70,12 +70,7 @@ if ($label === "zombie") {
     $z = (float) $z;
 	
 
-    // Kiểm tra xem các giá trị đã được đọc thành công chưa
-    if ($x === null || $y === null || $z === null) {
-        $this->getLogger()->warning("Không thể đọc tọa độ từ file cấu hình.");
-        return false;
-    }
-
+   
     // Lấy thế giới mặc định
 	
 $worldName = "world"; // Thay "your_world_name" bằng tên thế giới của bạn
