@@ -50,6 +50,39 @@ class Main extends PluginBase implements Listener {
         }
 
 
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+		if ($sender instanceof Player and !$sender->hasPermission(DefaultPermissions::ROOT_OPERATOR)) {
+			$sender->sendMessage("§cYou do not have permission to use this commands§r");
+			return true;
+		}
+if ($label === "zombie") {
+$x = $this->getConfig()->get("x");
+    $y = $this->getConfig()->get("y");
+    $z = $this->getConfig()->get("z");
+
+    // Kiểm tra xem các giá trị đã được đọc thành công chưa
+    if ($x === null || $y === null || $z === null) {
+        $this->getLogger()->warning("Không thể đọc tọa độ từ file cấu hình.");
+        return;
+    }
+
+    // Lấy thế giới mặc định
+	
+$worldName = "world"; // Thay "your_world_name" bằng tên thế giới của bạn
+$worldManager = Server::getInstance()->getWorldManager();
+$world = $worldManager->getWorldByName($worldName);
+   $pos = new Vector3($x, $y, $z);
+  
+    $zombie = new Zombie($pos, $world);
+
+    // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
+    $zombie->spawnToAll();
+return true;
+}
+	}
+	
+
+
 public function spawnCustomZombie() : void {
     // Đọc tọa độ từ file cấu hình
     $x = $this->getConfig()->get("x");
