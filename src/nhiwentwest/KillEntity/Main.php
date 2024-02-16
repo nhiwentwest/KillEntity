@@ -64,7 +64,7 @@ public function spawnCustomZombie() : void {
 
     // Lấy thế giới mặc định
 	
-$worldName = "your_world_name"; // Thay "your_world_name" bằng tên thế giới của bạn
+$worldName = "world"; // Thay "your_world_name" bằng tên thế giới của bạn
 $worldManager = Server::getInstance()->getWorldManager();
 $world = $worldManager->getWorldByName($worldName);
     // Kiểm tra xem thế giới có tồn tại không
@@ -72,9 +72,17 @@ $world = $worldManager->getWorldByName($worldName);
 
     // Tạo đối tượng Vector3 từ tọa độ đã đọc
     $pos = new Vector3($x, $y, $z);
+    $targetPosition = new Vector3($targetX, $targetY, $targetZ); // Thay thế $targetX, $targetY, $targetZ bằng vị trí của mục tiêu
 
-    // Tạo một đối tượng Zombie với vị trí, thế giới, hướng yaw và pitch
-    $zombie = new Zombie($pos, $world);
+// Tính toán hướng yaw và pitch dựa trên vị trí của đối tượng và mục tiêu
+$dx = $targetPosition->x - $pos->x;
+$dy = $targetPosition->y - $pos->y;
+$dz = $targetPosition->z - $pos->z;
+
+$yaw = atan2($dz, $dx) / M_PI * 180 - 90;
+$pitch = -atan2($dy, sqrt($dx * $dx + $dz * $dz)) / M_PI * 180;
+
+    $zombie = new Zombie($pos, $world, $yaw, $pitch);
 
     // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
     $zombie->spawnToAll();
