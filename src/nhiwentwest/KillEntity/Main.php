@@ -73,11 +73,7 @@ $world = $worldManager->getWorldByName($worldName);
     // Tạo đối tượng Vector3 từ tọa độ đã đọc
     $pos = new Vector3($x, $y, $z);
   
-
-$yaw = 0;
-$pitch = 0;
-
-    $zombie = new Zombie($pos, $world, $yaw, $pitch);
+    $zombie = new Zombie($pos, $world);
 
     // Gửi đối tượng Zombie tới tất cả người chơi trong thế giới
     $zombie->spawnToAll();
