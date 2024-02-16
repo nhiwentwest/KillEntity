@@ -61,17 +61,28 @@ public function onCommand(CommandSender $sender, Command $command, string $label
 		}
 	
 if ($label === "zombie") {
-    $x = $this->getConfig()->get("x");
-    $y = $this->getConfig()->get("y");
-    $z = $this->getConfig()->get("z");
+    $x1 = $this->getConfig()->get("x1");
+    $y1 = $this->getConfig()->get("y1");
+    $z1 = $this->getConfig()->get("z1");
     
-    $x = (float) $x;
-    $y = (float) $y;
-    $z = (float) $z;
+    $x1 = (float) $x1;
+    $y1 = (float) $y1;
+    $z1 = (float) $z1;
+   
+    $x2 = $this->getConfig()->get("x2");
+    $y2 = $this->getConfig()->get("y2");
+    $z2 = $this->getConfig()->get("z2");
+    
+    $x2 = (float) $x2;
+    $y2 = (float) $y2;
+    $z2 = (float) $z2;
 
    $yaw = 0.0; // Đặt yaw thành 0
-    $pitch = 0.0; // Đặt pitch thành 0
+   $pitch = 0.0; // Đặt pitch thành 0
 	
+$x = mt_rand(min($x1, $x2), max($x1, $x2));
+$y = mt_rand(min($y1, $y2), max($y1, $y2));
+$z = mt_rand(min($z1, $z2), max($z1, $z2));
 
    
     // Lấy thế giới mặc định
