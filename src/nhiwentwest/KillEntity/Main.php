@@ -26,9 +26,7 @@ use pocketmine\permission\DefaultPermissions;
 use nhiwentwest\KillEntity\economy\EconomyIntegration;
 use nhiwentwest\KillEntity\economy\EconomyManager;
 use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\math\Vector3;
-use pocketmine\entity\Zombie;
-use pocketmine\entity\Location;
+
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
