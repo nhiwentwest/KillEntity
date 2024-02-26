@@ -1,4 +1,4 @@
-# KillEntity Plugin for PocketMine
+# KillEntity
 
 ## Overview
 
