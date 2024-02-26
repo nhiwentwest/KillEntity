@@ -29,8 +29,6 @@ worlds:
 
 ## Donate
 
-I really appreciate your support.
-
 ```yaml
 http://paypal.me/nhiwentwest
 ```
